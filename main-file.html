@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tourist Destination</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!---Bootstrap CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <!---Bootstrap CSS-->
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css">
+
+    <style>
+        /* Navbar hover */
+        #nav:hover {
+            color: blue;
+        }
+
+        /* Hero Banner Style */
+        .hero-banner {
+            background: linear-gradient(135deg, #2f80ed, #56ccf2);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            margin: 40px auto;
+            max-width: 1000px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-banner::before {
+            content: "";
+            position: absolute;
+            top: -30%;
+            left: -30%;
+            width: 160%;
+            height: 160%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+            z-index: 0;
+            animation: rotate 12s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-banner h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .framer-lcznf3-container {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body {
+            padding-top: 90px;
+            /* Adjust height depending on navbar height */
+        }
+
+
+        /* Custom Navbar Styling */
+        .custom-navbar {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            /* Elegant gradient */
+            padding: 15px 30px;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .custom-navbar .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .custom-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #ffdd57;
+            transition: 0.3s;
+        }
+
+        .custom-navbar .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .custom-navbar .nav-link:hover {
+            color: #ffdd57 !important;
+        }
+
+        .custom-navbar .navbar-brand {
+            font-size: 28px;
+            color: #fff !important;
+        }
+
+        /* Add spacing for fixed navbar */
+        body {
+            padding-top: 90px;
+        }
+
+
+
+        /* 🌐 Enhanced Custom Navbar */
+        .custom-navbar {
+            background: rgba(30, 60, 114, 0.75);
+            /* Transparent glassy background */
+            backdrop-filter: blur(12px);
+            /* Blur for glassmorphism */
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        /* 🧭 Nav Brand */
+        .custom-navbar .navbar-brand {
+            font-size: 30px;
+            color: #fff !important;
+            font-weight: 700;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            transition: color 0.3s ease;
+        }
+
+        /* ✨ Nav Links */
+        .custom-navbar .nav-link {
+            color: #f5f5f5 !important;
+            font-weight: 500;
+            font-size: 18px;
+            position: relative;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* 🟡 Hover underline + background */
+        .custom-navbar .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 5px;
+            left: 10%;
+            background-color: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .custom-navbar .nav-link:hover {
+            color: #ffd700 !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .custom-navbar .nav-link:hover::after {
+            width: 80%;
+        }
+
+        /* 🟢 Responsive Toggler Icon (white) */
+        .navbar-toggler {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* 🧊 Smooth Scroll Offset */
+        body {
+            padding-top: 90px;
+            scroll-behavior: smooth;
+        }
+
+
+        /* Section Headings */
+        #featured-3 h2,
+        #custom-cards h2,
+        .container h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0a4275;
+            border-bottom: 3px solid #0a4275;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* Featured Columns */
+        .feature.col {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .feature.col:hover {
+            transform: translateY(-5px);
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature.col img {
+            height: 60px;
+            width: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 2px solid #0a4275;
+        }
+
+        /* Feature Titles */
+        .feature h3,
+        .card h3 {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* Call to Action Links */
+        a.icon-link {
+            color: #0a4275;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a.icon-link:hover {
+            color: #f4511e;
+        }
+
+        /* Cards */
+        .card.card-cover {
+            background-size: cover !important;
+            background-position: center center;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card.card-cover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Feature Icons */
+        .feature-icon-small {
+            width: 50px;
+            height: 50px;
+            background-color: #0a4275;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: #0a4275;
+            border-color: #0a4275;
+            padding: 12px 25px;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: #07325a;
+            border-color: #07325a;
+        }
+
+        /*Features Image*/
+        #features-img {
+            height: 300px;
+            width: 300px;
+            border-radius: 100%;
+        }
+
+        .features-img1 {
+            margin-left: 50%;
+        }
+
+        .features-img2 {
+            margin-left: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+    <!--Font Awesome Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+
+    <!--Navbar at the top -->
+    <style>
+        #i,
+        #a {
+            display: inline;
+        }
+
+        #i {
+            color: red;
+            font-size: 20px;
+        }
+
+        .hilo {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        img {
+            height: 100%;
+        }
+    </style>
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">🌍 About Me Website</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-4">
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-home"></i>
+                        <a id="a" class="nav-link" href="main-file.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-tools"></i>
+                        <a id="a" class="nav-link" href="./views/service.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="phone"></i>
+                        <a id="a" class="nav-link" href="./views/contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-earth"></i>
+                        <a id="a" class="nav-link" href="./views/explore.html">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <i id="i" class="fa fa-user"></i>
+                        <a id="a" class="nav-link" href="./views/profile.html">Profile</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!--End Navbar-->
+
+
+    <style>
+        img {
+            height: 500px;
+        }
+    </style>
+    <!-- Carousel -->
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./image/dubai.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Dubai</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/japan.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Japan</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="./image/korea.webp" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Korea</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <!--body-->
+    <!-------------------------------------------->
+    <!-------------Dubai Collections-------------->
+    <!-------------------------------------------->
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom">Dubai Collections</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            <div class="feature col">
+                <div>
+                    <img style="height: 50px; width: 50px; border-radius:100%;" src="./image/dubai1.jpg" alt="">
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Jumeirah luxury hotel</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nationalgeographic.com%2Ftravel%2Farticle%2Ffast-facts-6&psig=AOvVaw2O9RasJ6ulNTVlfUrY0fht&ust=1755222485897000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDp2bWXiY8DFQAAAAAdAAAAABAM"
+                    class="icon-link">
+                    Call to action
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="feature col">
+                <div>
+                    <img style="height: 50px; width: 50px; border-radius:100%;" src="./image/dubai2.jpg" alt="">
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Dubai CNN</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.cnn.com%2Ftravel%2Farticle%2Fdubai-visit-covid&psig=AOvVaw2O9RasJ6ulNTVlfUrY0fht&ust=1755222485897000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDp2bWXiY8DFQAAAAAdAAAAABA2"
+                    class="icon-link">
+                    Call to action
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="feature col">
+                <div>
+                    <img style="height: 50px; width: 50px; border-radius:100%;" src="./image/dubai3.webp" alt="">
+                </div>
+                <h3 class="fs-2 text-body-emphasis">Dubai’s Floods</h3>
+                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence
+                    and probably just keep going until we run out of words.</p>
+                <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fstory%2Fdubai-flooding-uae-cloud-seeding-climate-change%2F&psig=AOvVaw2O9RasJ6ulNTVlfUrY0fht&ust=1755222485897000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDp2bWXiY8DFQAAAAAdAAAAABA-"
+                    class="icon-link">
+                    Call to action
+                    <svg class="bi" aria-hidden="true">
+                        <use xlink:href="#chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------->
+    <!----------End-Dubai Collections------------->
+    <!-------------------------------------------->
+
+
+    <!-------------------------------------------->
+    <!-------------------Card--------------------->
+    <!-------------------------------------------->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <h5 class="card-header">Dubai</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">From Wikipedia, the free encyclopedia</h5>
+                        <p class="card-text">
+                            Dubai[a] is the most populous city in the United Arab Emirates and the capital of the
+                            Emirate of Dubai.[10] It is located on a creek on the south-eastern coast of the Persian
+                            Gulf. As of 2025, the city population stands at 4 million,[7] 92% of whom are
+                            expatriates.[11] The wider urban area includes Sharjah and has a population of 5 million
+                            people as of 2023,[6] while the Dubai–Sharjah–Ajman metropolitan area counts 6 million
+                            inhabitants.
+                        </p>
+                        <a href="https://www.google.com/search?sca_esv=656b10c93ec889a4&sxsrf=AE3TifNOD9gDKDqeNC3x6xiqzh2MTvWpVQ:1755136082989&udm=2&fbs=AIIjpHw1q9FwXlCFRKOtrZKPDT4lBnC-DnsgrBvJRWLokq9xA0qyXDL63TpVAkqb_E5_7w3jGH3HbeTqtwWrdOZYMdZsOdRg3q3TMb0w_gWVY05lZogqjN25-5Qo0cvrddu_VY0_Q18UKO0Ch0_MWEwKSg8zYlRtLncpbsBthcz9_n-djEAjLq6DX7rjiXccgaHxfgA8uwHOr0XRyHE2xezy0PBBxNzZq-J-HOrS_QkEVJ06RJ-kiZQ&q=dubai&sa=X&ved=2ahUKEwjNg4m2l4mPAxWDdPUHHboSOhgQtKgLegQIDhAB&biw=2133&bih=1050&dpr=0.9"
+                            class="btn btn-primary">
+                            Go somewhere</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------->
+    <!----------------End-Card-------------------->
+    <!-------------------------------------------->
+
+    <!-------------------------------------------->
+    <!-----------------Feature-------------------->
+    <!-------------------------------------------->
+    <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom">Korea</h2>
+        <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('./image/korea.webp');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Short title, long jacket</h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('./image/korea1.jpg');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Much longer title that wraps to multiple lines
+                        </h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg"
+                    style="background-image: url('./image/korea2.avif');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+                        <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Another longer title belongs here</h3>
+                        <ul class="d-flex list-unstyled mt-auto">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------->
+    <!----------------End-Feature----------------->
+    <!-------------------------------------------->
+
+    <!-------------------------------------------->
+    <!-------------------Card--------------------->
+    <!-------------------------------------------->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <h5 class="card-header">Korea</h5>
+                    <div class="card-body">
+                        <h5 class="card-title">From Wikipedia, the free encyclopedia</h5>
+                        <p class="card-text">
+                            Korea[a] is a peninsular region in East Asia consisting of the Korean Peninsula,[b] Jeju
+                            Island, and smaller islands. Since the end of World War II in 1945, it has been politically
+                            divided at or near the 38th parallel between North Korea (Democratic People's Republic of
+                            Korea; DPRK) and South Korea (Republic of Korea; ROK). Both countries proclaimed
+                            independence in 1948, and the two countries fought the Korean War from 1950 to 1953. The
+                            region is bordered by China to the north and Russia to the northeast, across the Amnok
+                            (Yalu) and Duman (Tumen) rivers, and is separated from Japan to the southeast by the Korea
+                            Strait.
+                        </p>
+                        <a href="https://www.google.com/search?sca_esv=1dfb77f5f82eed46&sxsrf=AE3TifOmyTq2CujNgBBDvV4ZCaPkfBkjZw:1755139181950&udm=2&fbs=AIIjpHxFZKm_vE2vRzm4OwDKAg_7EnC-lh6yXjW7nzOheYv_oTsvBVI8KB1plcKDC45rYGOLwJj9Rf_jvrc8MUgYnRoCyNZdGYlrFl1oJbON0USHaa9cbJqgHrC-3y-4i4vrowOz8FJ5Q3JFclpv8LRmJnk9U9-_1cmqMnTTYr5gLvoAh6P44f242xipmATRvNtPje-7j0gVmQLmuoBj9fHyV5a4DMASrenznosgWHiGFah3D0kQ4vQ&q=korea&sa=X&ved=2ahUKEwjgzeL7oomPAxXj3zQHHY8jInwQtKgLegQIEhAB&biw=2133&bih=1050&dpr=0.9"
+                            class="btn btn-primary">
+                            Go somewhere</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------->
+    <!----------------End-Card-------------------->
+    <!-------------------------------------------->
+</body>
+
+</html>
+</body>
+
+</html>
